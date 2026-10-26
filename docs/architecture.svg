@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" width="100%" height="100%" style="background:#0b0f19; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#ef4444" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#64748b" />
+    </marker>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#06b6d4" />
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#f59e0b" />
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#8b5cf6" />
+    </marker>
+
+    <!-- Filter Glow -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="620" fill="url(#bgGrad)" />
+  <rect x="15" y="15" width="970" height="590" rx="16" fill="none" stroke="#1e293b" stroke-width="1.5" />
+
+  <!-- Title Banner -->
+  <text x="500" y="50" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="700" letter-spacing="1">VOICEGUARD SYSTEM ARCHITECTURE</text>
+  <text x="500" y="72" text-anchor="middle" fill="#64748b" font-size="13">Dual-Engine Multi-Modal Real-Time Audio Fraud Defense</text>
+
+  <!-- 1. INGESTION -->
+  <g transform="translate(40, 110)">
+    <rect width="200" height="110" rx="10" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+    <circle cx="35" cy="35" r="14" fill="#3b82f6" fill-opacity="0.2" />
+    <text x="35" y="40" text-anchor="middle" font-size="14">🎙️</text>
+    <text x="60" y="38" fill="#f1f5f9" font-size="14" font-weight="600">Audio Ingestion</text>
+    <text x="20" y="68" fill="#94a3b8" font-size="12">• Live Mic / Stream</text>
+    <text x="20" y="86" fill="#94a3b8" font-size="12">• 16 kHz Mono Standard</text>
+    <text x="20" y="104" fill="#94a3b8" font-size="12">• 3s Window (48k samples)</text>
+  </g>
+
+  <!-- Arrow: Ingestion -> Split -->
+  <path d="M 240 165 L 290 165" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- DUAL ENGINE SPLIT BOX -->
+  <rect x="290" y="95" width="370" height="490" rx="14" fill="#0f172a" fill-opacity="0.6" stroke="#1e293b" stroke-width="1.5" />
+  <text x="475" y="122" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="700" letter-spacing="1.5">PARALLEL DUAL-ENGINE PROCESSING</text>
+
+  <!-- ENGINE A: ACOUSTIC BRANCH -->
+  <g transform="translate(310, 140)">
+    <rect width="330" height="195" rx="10" fill="url(#cardGrad)" stroke="#06b6d4" stroke-width="1.5" />
+    <rect x="12" y="12" width="140" height="22" rx="4" fill="#06b6d4" fill-opacity="0.15" />
+    <text x="18" y="27" fill="#06b6d4" font-size="11" font-weight="700">ENGINE A: ACOUSTIC</text>
+
+    <!-- Sub-step 1 -->
+    <rect x="15" y="44" width="300" height="38" rx="6" fill="#0f172a" stroke="#334155" />
+    <text x="25" y="63" fill="#f8fafc" font-size="11" font-weight="600">Wav2Vec 2.0 Base</text>
+    <text x="25" y="75" fill="#64748b" font-size="10">Self-Supervised Feature Extractor (768-dim)</text>
+
+    <!-- Sub-step 2 -->
+    <rect x="15" y="90" width="300" height="38" rx="6" fill="#0f172a" stroke="#334155" />
+    <text x="25" y="109" fill="#f8fafc" font-size="11" font-weight="600">Bi-directional LSTM (hidden=128)</text>
+    <text x="25" y="121" fill="#64748b" font-size="10">Captures temporal prosody &amp; vocoder artifacts</text>
+
+    <!-- Sub-step 3 -->
+    <rect x="15" y="136" width="300" height="45" rx="6" fill="#0f172a" stroke="#334155" />
+    <text x="25" y="154" fill="#f8fafc" font-size="11" font-weight="600">Attention Pooling + MLP Head</text>
+    <text x="25" y="169" fill="#06b6d4" font-size="10" font-weight="600">Output: Voice Authenticity Probability [0.0 - 1.0]</text>
+  </g>
+
+  <!-- ENGINE B: SEMANTIC BRANCH -->
+  <g transform="translate(310, 360)">
+    <rect width="330" height="205" rx="10" fill="url(#cardGrad)" stroke="#f59e0b" stroke-width="1.5" />
+    <rect x="12" y="12" width="140" height="22" rx="4" fill="#f59e0b" fill-opacity="0.15" />
+    <text x="18" y="27" fill="#f59e0b" font-size="11" font-weight="700">ENGINE B: SEMANTIC</text>
+
+    <!-- Sub-step 1 -->
+    <rect x="15" y="44" width="300" height="38" rx="6" fill="#0f172a" stroke="#334155" />
+    <text x="25" y="63" fill="#f8fafc" font-size="11" font-weight="600">Faster-Whisper (Quantized ASR)</text>
+    <text x="25" y="75" fill="#64748b" font-size="10">Streaming Real-Time Speech-to-Text</text>
+
+    <!-- Sub-step 2 -->
+    <rect x="15" y="90" width="300" height="50" rx="6" fill="#0f172a" stroke="#334155" />
+    <text x="25" y="108" fill="#f8fafc" font-size="11" font-weight="600">Social Engineering Scanner</text>
+    <text x="25" y="121" fill="#64748b" font-size="10">OTP, CVV, passwords, bank numbers, gift cards</text>
+    <text x="25" y="133" fill="#64748b" font-size="10">Urgency triggers ("immediately", "right now")</text>
+
+    <!-- Sub-step 3 -->
+    <rect x="15" y="148" width="300" height="45" rx="6" fill="#0f172a" stroke="#334155" />
+    <text x="25" y="166" fill="#f8fafc" font-size="11" font-weight="600">Scam &amp; Urgency Heuristics</text>
+    <text x="25" y="181" fill="#f59e0b" font-size="10" font-weight="600">Output: Social Engineering Risk Score [0.0 - 1.0]</text>
+  </g>
+
+  <!-- Connect Ingestion to Engines -->
+  <path d="M 270 165 L 270 235 L 310 235" fill="none" stroke="#06b6d4" stroke-width="2" marker-end="url(#arrowCyan)" />
+  <path d="M 270 165 L 270 460 L 310 460" fill="none" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)" />
+
+  <!-- Arrow: Engines -> Fusion -->
+  <path d="M 640 240 L 700 310" fill="none" stroke="#06b6d4" stroke-width="2" marker-end="url(#arrowCyan)" />
+  <path d="M 640 460 L 700 360" fill="none" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)" />
+
+  <!-- 3. RISK FUSION ENGINE -->
+  <g transform="translate(700, 260)">
+    <rect width="250" height="150" rx="10" fill="url(#cardGrad)" stroke="#8b5cf6" stroke-width="2" filter="url(#glow)" />
+    <rect x="12" y="12" width="160" height="22" rx="4" fill="#8b5cf6" fill-opacity="0.2" />
+    <text x="18" y="27" fill="#c084fc" font-size="11" font-weight="700">MULTI-MODAL RISK FUSION</text>
+
+    <text x="20" y="58" fill="#f8fafc" font-size="11" font-weight="600">Weighted Fusion Formula:</text>
+    <text x="20" y="76" fill="#38bdf8" font-size="10" font-family="monospace">Risk = (Acoustic × 0.6)</text>
+    <text x="65" y="92" fill="#fbbf24" font-size="10" font-family="monospace">+ (Scam × 0.4)</text>
+
+    <!-- Threat Tiers -->
+    <rect x="15" y="105" width="68" height="28" rx="4" fill="#ef4444" fill-opacity="0.2" stroke="#ef4444" />
+    <text x="49" y="123" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">HIGH</text>
+
+    <rect x="90" y="105" width="68" height="28" rx="4" fill="#f59e0b" fill-opacity="0.2" stroke="#f59e0b" />
+    <text x="124" y="123" text-anchor="middle" fill="#fde68a" font-size="10" font-weight="700">MEDIUM</text>
+
+    <rect x="165" y="105" width="68" height="28" rx="4" fill="#10b981" fill-opacity="0.2" stroke="#10b981" />
+    <text x="199" y="123" text-anchor="middle" fill="#a7f3d0" font-size="10" font-weight="700">LOW</text>
+  </g>
+
+  <!-- Arrow: Fusion -> SOC Output -->
+  <path d="M 825 410 L 825 470" fill="none" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrowPurple)" />
+
+  <!-- 4. ACTION & SOC DASHBOARD -->
+  <g transform="translate(700, 470)">
+    <rect width="250" height="95" rx="10" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+    <text x="20" y="28" fill="#f8fafc" font-size="12" font-weight="600">🛡️ Active Defense &amp; Dashboard</text>
+    <text x="20" y="48" fill="#94a3b8" font-size="11">• Live SOC Console &amp; Waveforms</text>
+    <text x="20" y="66" fill="#94a3b8" font-size="11">• Automated Identity Challenge</text>
+    <text x="20" y="84" fill="#94a3b8" font-size="11">• Real-Time REST / WebSocket API</text>
+  </g>
+</svg>

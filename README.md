@@ -32,35 +32,36 @@ Traditional caller ID and telephony spam filters fail completely against voice c
 
 VoiceGuard processes incoming audio through two synchronized, parallel streams before fusing them into an actionable threat evaluation.
 
-### Flow Diagram
+### Architectural Diagram
+
+<p align="center">
+  <img src="docs/architecture.svg" alt="VoiceGuard System Architecture" width="100%" />
+</p>
 
 ```mermaid
 flowchart TD
-    IN[Audio Stream: Live Mic or Call] --> PRE[Audio Preprocessing: 16 kHz Mono, 3s Windows]
+    A["Audio Ingestion (16 kHz, 3s Windows)"] --> B["Acoustic Deepfake Engine"]
+    A --> C["Semantic Fraud Engine"]
 
-    PRE --> ACOUSTIC[Acoustic Deepfake Pipeline]
-    PRE --> SEMANTIC[Semantic Fraud Pipeline]
+    B --> D["Wav2Vec 2.0 Feature Extractor"]
+    D --> E["Bi-directional LSTM (hidden=128)"]
+    E --> F["Attention Pooling Layer"]
+    F --> G["Voice Authenticity Score"]
 
-    ACOUSTIC --> W2V[Wav2Vec 2.0 Base Extractor]
-    W2V --> BLSTM[Bi-directional LSTM Layer]
-    BLSTM --> ATTN[Attention Pooling Layer]
-    ATTN --> CLF[Classification Head]
-    CLF --> V_SCORE[Voice Authenticity Score]
+    C --> H["Faster-Whisper Quantized ASR"]
+    H --> I["Real-Time Transcript"]
+    I --> J["Social Engineering Scanner"]
+    J --> K["Scam & Urgency Score"]
 
-    SEMANTIC --> ASR[Faster-Whisper Quantized ASR]
-    ASR --> TXT[Live Transcript]
-    TXT --> NLP[Social Engineering Heuristics Scanner]
-    NLP --> S_SCORE[Scam & Urgency Score]
+    G --> L["Multi-Modal Risk Fusion Engine"]
+    K --> L
 
-    V_SCORE --> FUSION[Multi-Modal Risk Fusion Engine]
-    S_SCORE --> FUSION
+    L --> M{"Threat Decision"}
+    M -->|"Score &ge; 0.70"| N["High Risk: Trigger Identity Challenge"]
+    M -->|"Score 0.35 - 0.69"| O["Medium Risk: Caution Advisory"]
+    M -->|"Score &lt; 0.35"| P["Low Risk: Normal Verified Call"]
 
-    FUSION --> DECISION{Threat Classifier}
-    DECISION -->|Score >= 0.70| HIGH[High Risk: Trigger Identity Challenge]
-    DECISION -->|0.35 - 0.69| MED[Medium Risk: Caution Advisory]
-    DECISION -->|Score < 0.35| LOW[Low Risk: Normal Verified Call]
-
-    DECISION --> SOC[Live SOC Dashboard & Webhook Stream]
+    M --> Q["Live SOC Dashboard Stream"]
 ```
 
 ---
