@@ -38,3 +38,17 @@ Thumbs.db
 # Generated evaluation outputs
 *.png
 *.csv
+
+# Compiled binaries and build artifacts
+*.exe
+*.o
+*.obj
+
+# Extra virtualenvs
+.venv_test/
+
+# Miscellaneous scratch and homework files
+*.c
+queue.txt
+queue_array.txt
+gyguj.py
